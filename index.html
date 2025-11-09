@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Size Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9ebc2; /* Cream background color */
+            margin: 0;
+            padding: 0;
+            color: #ffA500;
+
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features_form {
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #34495e; /* Dark form background color */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            color: #ecf0f1; /* Form text color */
+        }
+
+        h1, h3 {
+            text-align: center;
+            color: #ecf0f1; /* Title text color */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            background-color: #ecf0f1; /* Input background color */
+            color: #2c3e50; /* Input text color */
+        }
+
+        button {
+            background-color: #3498db;
+            color: #ecf0f1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #result {
+            text-align: center;
+            margin-top: 20px;
+            color: #ecf0f1; /* Result text color */
+        }
+
+        .note {
+            margin-top: 20px;
+            color: #ecf0f1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="features_form">
+            <h1>Cloth Size Prediction</h1>
+
+            <form action="{{ url_for('predict') }}" method="post">
+                <input type="text" name="age" placeholder="Age(years)" required="required"/>
+                <input type="text" name="height" placeholder="Height(cm)" required="required"/>
+                <input type="text" name="weight" placeholder="Weight(kg)" required="required"/>
+                <button type="submit">Predict</button>
+            </form>
+
+            <hr />
+
+            <h1>Predicted Size: {{ predicted_size }}</h1>
+            <div id="result"></div>
+
+          
+        </div>
+    </div>
+</body>
+</html>
